@@ -59,7 +59,21 @@ document.addEventListener('keyup', e => {
 });
 
 // scroll
+document.addEventListener('scroll', e => {
+	divs.forEach(div => {
+		div.style.backgroundColor = `#${Math.floor(Math.random() * 1000000)}`;
+	});
+});
 
 // resize
+window.addEventListener('resize', e => {
+	divs.forEach(div => {
+		div.style.backgroundColor = `#${Math.floor(Math.random() * 1000000)}`;
+	});
+});
 
-console.log(5);
+// 9
+
+// 10
+
+console.log(7);
