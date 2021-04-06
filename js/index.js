@@ -31,7 +31,7 @@ welcomeMessage.addEventListener('dblclick', e => {
 	}
 });
 
-// prevent
+// prevent Default
 let navLinks = Array.from(document.links).forEach(link => {
 	link.addEventListener('click', e => {
 		e.preventDefault();
@@ -39,4 +39,27 @@ let navLinks = Array.from(document.links).forEach(link => {
 	});
 });
 
-console.log(4);
+// keydown
+const divs = document.querySelectorAll('div');
+document.addEventListener('keydown', e => {
+	if (e.key === 'Escape') {
+		divs.forEach(div => {
+			div.style.backgroundColor = `#${Math.floor(Math.random() * 1000000)}`;
+		});
+	}
+});
+
+// keyup
+document.addEventListener('keyup', e => {
+	if (e.key === 'Escape') {
+		divs.forEach(div => {
+			div.style.backgroundColor = `white`;
+		});
+	}
+});
+
+// scroll
+
+// resize
+
+console.log(5);
