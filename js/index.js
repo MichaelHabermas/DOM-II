@@ -4,11 +4,11 @@ busImg.style.transition = 'all 1s';
 
 // zoom the bus image in and out
 
-busImg.addEventListener('mouseover', e => {
+busImg.addEventListener('mouseover', () => {
 	busImg.style.transform = 'scale(1.5)';
 });
 
-busImg.addEventListener('mouseout', e => {
+busImg.addEventListener('mouseout', () => {
 	busImg.style.transform = 'scale(1)';
 });
 
@@ -16,13 +16,13 @@ busImg.addEventListener('mouseout', e => {
 let mapImg = document.querySelector('.img-content img');
 mapImg.style.transition = 'all 1s';
 let delta = 360;
-mapImg.addEventListener('click', e => {
+mapImg.addEventListener('click', () => {
 	mapImg.style.transform = `rotate(${delta}deg)`;
 	delta += 360;
 });
 
 const welcomeMessage = document.querySelector('.intro h2');
-welcomeMessage.addEventListener('dblclick', e => {
+welcomeMessage.addEventListener('dblclick', () => {
 	if (welcomeMessage.textContent !== welcomeMessage.textContent.toUpperCase()) {
 		welcomeMessage.textContent = welcomeMessage.textContent.toUpperCase();
 	} else {
@@ -32,7 +32,7 @@ welcomeMessage.addEventListener('dblclick', e => {
 });
 
 // prevent Default
-let navLinks = Array.from(document.links).forEach(link => {
+Array.from(document.links).forEach(link => {
 	link.addEventListener('click', e => {
 		e.preventDefault();
 		console.log('is working');
@@ -52,6 +52,8 @@ document.addEventListener('keydown', e => {
 // keyup
 document.addEventListener('keyup', e => {
 	if (e.key === 'Escape') {
+		mapImg.style.transform = 'scale(1)';
+		riverImg.style.transform = 'skew(0deg, 0deg)';
 		divs.forEach(div => {
 			div.style.backgroundColor = `white`;
 		});
@@ -59,21 +61,30 @@ document.addEventListener('keyup', e => {
 });
 
 // scroll
-document.addEventListener('scroll', e => {
+document.addEventListener('scroll', () => {
 	divs.forEach(div => {
 		div.style.backgroundColor = `#${Math.floor(Math.random() * 1000000)}`;
 	});
 });
 
 // resize
-window.addEventListener('resize', e => {
+window.addEventListener('resize', () => {
 	divs.forEach(div => {
 		div.style.backgroundColor = `#${Math.floor(Math.random() * 1000000)}`;
 	});
 });
 
-// 9
+// 9 animation end
+mapImg.addEventListener('pointerleave', () => {
+	mapImg.style.transform = 'scale(1.5)';
+});
 
-// 10
+// 10 pointer out
+let riverImg = document.querySelector('.img-fluid');
+riverImg.style.transition = 'all 1s';
+riverImg.addEventListener('pointerout', () => {
+	console.log('Hi Im working');
+	riverImg.style.transform = 'skew(30deg, 20deg)';
+});
 
-console.log(7);
+console.log(8);
