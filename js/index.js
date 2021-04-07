@@ -4,15 +4,18 @@ busImg.style.transition = 'all 1s';
 
 // zoom the bus image in and out
 
+// mouseover
 busImg.addEventListener('mouseover', () => {
 	busImg.style.transform = 'scale(1.5)';
 });
 
+// mouseout
 busImg.addEventListener('mouseout', () => {
 	busImg.style.transform = 'scale(1)';
 });
 
 //spin the map image
+// click
 let mapImg = document.querySelector('.img-content img');
 mapImg.style.transition = 'all 1s';
 let delta = 360;
@@ -21,13 +24,24 @@ mapImg.addEventListener('click', () => {
 	delta += 360;
 });
 
+// double click
 const welcomeMessage = document.querySelector('.intro h2');
-welcomeMessage.addEventListener('dblclick', () => {
+const header = document.querySelector('.intro');
+
+welcomeMessage.addEventListener('dblclick', e => {
+	e.stopPropagation();
 	if (welcomeMessage.textContent !== welcomeMessage.textContent.toUpperCase()) {
 		welcomeMessage.textContent = welcomeMessage.textContent.toUpperCase();
 	} else {
-		console.log('Part B Working');
 		welcomeMessage.textContent = welcomeMessage.textContent.toLowerCase();
+	}
+});
+
+header.addEventListener('dblclick', () => {
+	if (header.style.backgroundColor === '') {
+		header.style.backgroundColor = 'blue';
+	} else {
+		header.style.backgroundColor = '';
 	}
 });
 
@@ -86,5 +100,3 @@ riverImg.addEventListener('pointerout', () => {
 	console.log('Hi Im working');
 	riverImg.style.transform = 'skew(30deg, 20deg)';
 });
-
-console.log(8);
